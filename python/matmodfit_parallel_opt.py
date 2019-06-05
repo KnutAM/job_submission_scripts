@@ -6,18 +6,19 @@ import argparse
 import subprocess
 import shutil
 
-system = os.environ['SNIC_RESOURCE']    # Gives hebbe on hebbe and vera on vera
+cluster = os.environ['SNIC_RESOURCE']    # Gives hebbe on hebbe and vera on vera
+repository_path = str((Path(os.path.realpath(__file__)).parent).absolute())
 
 global_settings = {'debug': False, 'debug_nr': 0,
                    'base_file': 'matmodfit.inp',
-                   'sbatch_single': '~/scripts_sbatch_' + system + '/mmf_single.sh',
-                   'sbatch_array': '~/scripts_sbatch_' + system + '/mmf_array.sh',
-                   'sbatch_python': '~/scripts_sbatch_' + system + '/run_python.sh',    
-                   'python_setup': '~/scripts_python/mmf_parallel_setup.py'}
+                   'sbatch_single': repository_path + '/' + cluster + '_sbatch/mmf_single.sh',
+                   'sbatch_array': repository_path + '/'+ cluster + '_sbatch/mmf_array.sh',
+                   'sbatch_python': repository_path + '/' + cluster + '_sbatch/run_python.sh',    
+                   'python_setup': repository_path + '/python/mmf_parallel_setup.py'}
 
-if system == 'hebbe':
+if cluster == 'hebbe':
     default_projects = {'hebbe': 'C3SE2019-1-4', 'mob': 'C3SE507-15-6'}
-elif system == 'vera':
+elif cluster == 'vera':
     default_projects = {'vera': 'C3SE2019-1-4'}
 
 # Requirements for args.base_file:
