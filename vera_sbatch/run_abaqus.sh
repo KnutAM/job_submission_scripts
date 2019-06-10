@@ -6,8 +6,6 @@
 #SBATCH -t 2-00         # Walltime limit (days-hours)
 #SBATCH -A C3SE2019-1-4 # Project
 #SBATCH -p vera         # Partition
-#SBATCH --mail-user=knutan@chalmers.se
-#SBATCH --mail-type=ALL # Mail for all changes
 
 ## Example calling line:
  # sbatch -J myjob -o mylog.out -n 10 ~/jobscripts/run_abaqus.sh -i my.inp -u umat.o -s "12h"

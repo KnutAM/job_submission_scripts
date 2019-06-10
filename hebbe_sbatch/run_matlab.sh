@@ -6,8 +6,6 @@
 #SBATCH -t 1-00         # Walltime limit (days-hours)
 #SBATCH -A C3SE2018-1-17# Project (main queue: "C3SE2018-1-17", mob: "C3SE507-15-6")
 #SBATCH -p hebbe        # Partition ("hebbe" main queue, "mob" private at MoB)
-#SBATCH --mail-user=knutan@chalmers.se
-#SBATCH --mail-type=ALL # Mail for all changes
 
 ## Example calling line:
  # sbatch -o test.out -n 10 run_matlab.sh -i my.m
