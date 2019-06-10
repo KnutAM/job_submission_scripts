@@ -7,7 +7,7 @@ import subprocess
 import shutil
 
 cluster = os.environ['SNIC_RESOURCE']    # Gives hebbe on hebbe and vera on vera
-repository_path = str((Path(os.path.realpath(__file__)).parent).absolute())
+repository_path = str((Path(os.path.realpath(__file__)).parent.parent).absolute())
 
 global_settings = {'debug': False, 'debug_nr': 0,
                    'base_file': 'matmodfit.inp',

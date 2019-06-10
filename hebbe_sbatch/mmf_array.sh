@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -J mmf          # Name of job
-#SBATCH -o mmf.out      # Output log
+#SBATCH -o mmfaH.out      # Output log
 #SBATCH -N 1            # Number of nodes
 #SBATCH -n 1            # Number of processes
 #SBATCH -t 4-00         # Walltime limit (days-hours)
@@ -45,10 +45,13 @@ echo "Inputfile = $inputfile"
 if [ $change_dir ]; then
     cp -pr * $TMPDIR
     cd $TMPDIR
-fi
-
-matmodfit $inputfile
-
-if [ $change_dir ]; then
-    cp -pr $TMPDIR/* $SLURM_SUBMIT_DIR/$THE_DIR # Copy all data
+	while sleep 1h; do
+		rsync *.err $SLURM_SUBMIT_DIR/$THE_DIR
+	done &
+	LOOPPID=$!
+	matmodfit $inputfile
+	kill $LOOPPID
+	cp -pr $TMPDIR/* $SLURM_SUBMIT_DIR/$THE_DIR # Copy all data
+else
+	matmodfit $inputfile
 fi

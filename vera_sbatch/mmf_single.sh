@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH -J mmf    		# Name of job
-#SBATCH -o mmf.out		# Output log
+#SBATCH -J mmfsV  		# Name of job
+#SBATCH -o mmfsV.out	# Output log
 #SBATCH -N 1            # Number of nodes
 #SBATCH -n 1            # Number of processes
 #SBATCH -t 2-00         # Walltime limit (days-hours)
@@ -28,7 +28,7 @@ inputfile=$(find -name *.inp)
 
 # Load modules (required for some shared libraries)
 module load intel
-module load ifort/2018.3.222-GCC-7.3.0-2.30  impi/2018.3.222 Python/3.7.0
+module load iccifort/2018.3.222-GCC-7.3.0-2.30  impi/2018.3.222 Python/3.6.7
 
 echo "Change directory: " $change_dir
 if [ $change_dir ]; then
