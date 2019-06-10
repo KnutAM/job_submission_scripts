@@ -56,7 +56,7 @@ cd $TMPDIR
 
 # Setup backup
 while sleep $copytime; do
-  rsync *.odb $SLURM_SUBMIT_DIR/
+  rsync * $SLURM_SUBMIT_DIR/
 done &
 LOOPPID=$!
 
