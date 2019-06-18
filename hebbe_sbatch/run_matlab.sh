@@ -10,13 +10,16 @@
 ## Example calling line:
  # sbatch -o test.out -n 10 run_matlab.sh -i my.m
 
-matlab_parallel_setup="/c3se/users/knutan/Hebbe/jobscripts/matlab_parallel_setup"
+matlab_parallel_setup="$HOME/job_submissionscripts_matlab/matlab_parallel_setup"
 # Get input options
-while getopts ":i:" opt; do
+while getopts ":i:p" opt; do
   case $opt in
     i)
       inputfile=$OPTARG
       ;;
+	p)
+	  parallel="YES"
+	  ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
       exit 1
@@ -36,5 +39,9 @@ fi
 
 # Setup environment
 module load MATLAB
-matlab -nodesktop -nosplash -r "run('$matlab_parallel_setup');$inputfile" < /dev/null
+if [ -z $parallel ]; then
+	matlab -nodesktop -nosplash -singleCompThread -r "run('$inputfile');exit;" < /dev/null
+else
+	matlab -nodesktop -nosplash -r "run('$matlab_parallel_setup');$inputfile" < /dev/null
+fi
 
