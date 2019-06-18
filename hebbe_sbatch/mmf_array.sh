@@ -4,7 +4,7 @@
 #SBATCH -N 1            # Number of nodes
 #SBATCH -n 1            # Number of processes
 #SBATCH -t 4-00         # Walltime limit (days-hours)
-#SBATCH -A C3SE507-15-6 # Project (main queue: "C3SE2018-1-17", mob: "C3SE507-15-6")
+#SBATCH -A C3SE507-15-6 # Project (main queue: "C3SE2019-1-4", mob: "C3SE507-15-6")
 #SBATCH -p mob          # Partition ("hebbe" main queue, "mob" private at MoB)
 
 while getopts ":c" opt; do
