@@ -1,6 +1,5 @@
 #!/bin/bash
 #SBATCH -J mmfaV   		# Name of job
-#SBATCH -o mmfaV.out	# Output log
 #SBATCH -N 1            # Number of nodes
 #SBATCH -n 1            # Number of processes
 #SBATCH -t 2-00         # Walltime limit (days-hours)
@@ -28,8 +27,7 @@ done
 DIRS=($(find * -type d))
 
 # Load modules (required for some shared libraries)
-module load intel
-module load iccifort/2018.3.222-GCC-7.3.0-2.30  impi/2018.3.222 Python/3.6.7
+module load intel/2019a Python SciPy-bundle
 
 # Change to correct directory
 THE_DIR=${DIRS[$SLURM_ARRAY_TASK_ID]}

@@ -1,6 +1,5 @@
 #!/bin/bash
 #SBATCH -J mmf          # Name of job
-#SBATCH -o mmfaH.out      # Output log
 #SBATCH -N 1            # Number of nodes
 #SBATCH -n 1            # Number of processes
 #SBATCH -t 4-00         # Walltime limit (days-hours)
