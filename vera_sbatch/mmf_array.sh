@@ -27,7 +27,8 @@ done
 DIRS=($(find * -type d))
 
 # Load modules (required for some shared libraries)
-module load intel/2019a Python SciPy-bundle
+module load intel
+module load foss Python SciPy-bundle
 
 # Change to correct directory
 THE_DIR=${DIRS[$SLURM_ARRAY_TASK_ID]}

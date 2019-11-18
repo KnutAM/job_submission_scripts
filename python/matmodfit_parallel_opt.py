@@ -119,7 +119,7 @@ def setup_optimization(args, waitfor_jobid):
     os.chdir(the_dir)
     system_call = 'sbatch -t 01:00 -J setup -d afterok:' + str(waitfor_jobid) + ' ' \
                   + project_string \
-                  + global_settings['sbatch_python'] + ' '\
+                  + global_settings['sbatch_python'] + ' -s'\
                   + '"' + global_settings['python_setup'] \
                   + ' ' + global_settings['base_file'] + ' ' + str(args.num_optimizations) + '"'
     jobid = submit_job(system_call)

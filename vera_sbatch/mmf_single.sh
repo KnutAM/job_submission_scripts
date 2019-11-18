@@ -27,7 +27,8 @@ done
 inputfile=$(find -name *.inp)
 
 # Load modules (required for some shared libraries)
-module load intel/2019a Python SciPy-bundle
+module load foss Python SciPy-bundle
+module load intel
 
 echo "Change directory: " $change_dir
 if [ $change_dir ]; then
