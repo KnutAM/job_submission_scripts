@@ -8,10 +8,18 @@
 #SBATCH -p vera         # Partition
 
 ## Example calling line:
- # sbatch -J myjob -o mylog.out -n 10 ~/jobscripts/run_abaqus.sh -i my.inp -u umat.o -s "12h"
+ # sbatch -J myjob -o mylog.out -n 10 ~/job_submission_scripts/vera_sbatch/run_abaqus.sh -i my.inp -u umat.o -s "12h"
+ # Input between "sbatch" and "~/job_submission_scripts/vera_sbatch/run_abaqus.sh" set sbatch options (overrides what is in this file)
+ # Inputs after run_abaqus.sh sets input options to this file, as follows:
+ 
+ # Inputs
+ # i    which input file to run, either absolute path or relative path from your current location. (Your current location will be your submission directory)
+ # u    which umat to use (in the umat path as specified below)
+ # o    If you need to use the oldjob=* option in abaqus command, specify * here
+ # s    The backup interval, when to copy all files back to submit directory in case simulation crashes before it is completed (or time-limit is hit)
 
 # Define default paths
-umat_path=$HOME/abaqus_umats
+umat_path=$HOME/abaqus_umats    # Path where your compiled umats are located
  
 # Get input options
 while getopts ":i:u:o:s:" opt; do
