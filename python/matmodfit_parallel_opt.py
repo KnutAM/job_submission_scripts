@@ -11,9 +11,9 @@ repository_path = str((Path(os.path.realpath(__file__)).parent.parent).absolute(
 
 global_settings = {'debug': False, 'debug_nr': 0,
                    'base_file': 'matmodfit.inp',
-                   'sbatch_single': repository_path + '/' + cluster + '_sbatch/mmf_single.sh',
-                   'sbatch_array': repository_path + '/'+ cluster + '_sbatch/mmf_array.sh',
-                   'sbatch_python': repository_path + '/' + cluster + '_sbatch/run_python.sh',    
+                   'sbatch_single': repository_path + '/' + 'sbatch/mmf_single.sh',
+                   'sbatch_array': repository_path + '/'+ 'sbatch/mmf_array.sh',
+                   'sbatch_python': repository_path + '/' + 'sbatch/run_python.sh',    
                    'python_setup': repository_path + '/python/mmf_parallel_setup.py'}
 
 if cluster == 'hebbe':
