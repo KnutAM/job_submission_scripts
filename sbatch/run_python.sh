@@ -1,11 +1,6 @@
 #!/bin/bash
-#SBATCH -J python  		# Name of job
-##SBATCH -o python.out	# Output log # Do not use custom name, this will be overwritten and be empty
 #SBATCH -N 1            # Number of nodes
 #SBATCH -n 1            # Number of processes
-#SBATCH -t 2-00         # Walltime limit (days-hours)
-#SBATCH -A C3SE2019-1-4 # Project
-#SBATCH -p vera         # Partition
 
 # Get input options
 while getopts ":s:c" opt; do

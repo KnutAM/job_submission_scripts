@@ -1,11 +1,6 @@
 #!/bin/bash
-#SBATCH -J mmfsV  		# Name of job
-#SBATCH -o mmfsV_slurm.out	# Output log
 #SBATCH -N 1            # Number of nodes
 #SBATCH -n 1            # Number of processes
-#SBATCH -t 2-00         # Walltime limit (days-hours)
-#SBATCH -A C3SE2019-1-4 # Project
-#SBATCH -p vera         # Partition
 
 while getopts ":c" opt; do
   case $opt in

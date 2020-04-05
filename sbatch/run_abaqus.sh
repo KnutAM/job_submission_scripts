@@ -1,11 +1,6 @@
 #!/bin/bash
-#SBATCH -J abaqus       # Name of job
-#SBATCH -o aba.out      # Output log default name
 #SBATCH -N 1            # Number of nodes
 #SBATCH -n 10           # Number of processes
-#SBATCH -t 2-00         # Walltime limit (days-hours)
-#SBATCH -A C3SE2019-1-4 # Project
-#SBATCH -p vera         # Partition
 
 ## Example calling line:
  # sbatch -J myjob -o mylog.out -n 10 ~/../job_submission_scripts/sbatch/run_abaqus.sh -i my.inp -u umat.o -s "12h"
