@@ -67,17 +67,17 @@ LOOPPID=$!
 if [ -z $umat ]; then
     # No umat chosen (assume it is not required
     if [ -z $oldjob ]; then
-        abaqus job=$inputfile cpus=$SLURM_NPROCS
+        abaqus job=$inputfile cpus=$SLURM_NPROCS interactive
     else
-        abaqus job=$inputfile oldjob=$oldjob cpus=$SLURM_NPROCS
+        abaqus job=$inputfile oldjob=$oldjob cpus=$SLURM_NPROCS interactive
     fi
 else
     cp -p $umat_path/$umat $TMPDIR
     module load intel
     if [ -z $oldjob ]; then
-        abaqus job=$inputfile user=$umat cpus=$SLURM_NPROCS
+        abaqus job=$inputfile user=$umat cpus=$SLURM_NPROCS interactive
     else
-        abaqus job=$inputfile oldjob=$oldjob user=$umat cpus=$SLURM_NPROCS
+        abaqus job=$inputfile oldjob=$oldjob user=$umat cpus=$SLURM_NPROCS interactive
     fi
 fi
 
