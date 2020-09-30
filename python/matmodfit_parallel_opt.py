@@ -66,6 +66,9 @@ def parameter_space(args):
         os.makedirs('pspace')
 
     shutil.copy(args.base_file, 'pspace/' + args.base_file)
+    if args.additional_files:
+        for afile in args.additional_files.split(','):
+            shutil.copy(afile, 'pspace/' + afile)
     os.chdir('pspace')
     make_pspace_inp(args)
     system_call = create_system_call(global_settings['sbatch_single'], args, 'pspace', None)
@@ -103,6 +106,10 @@ def setup_optimization(args, waitfor_jobid):
         dirname = the_dir + '/' + global_settings['base_file'].split('.')[0] + 'opt{:02d}'.format(optnr)
         os.makedirs(dirname)
         shutil.copy(args.base_file, dirname)
+        if args.additional_files:
+            for afile in args.additional_files.split(','):
+                shutil.copy(afile, dirname)
+
     
     # Step 2: Create project string (if requested)
     project_string = ''
@@ -184,6 +191,8 @@ if __name__ == '__main__':
     parser.add_argument('-b', '--base_file', metavar='base_file', default=None,
                         help='Base file containing global settings, simulations and optimization setup for one '
                               + 'initial guess.')
+    parser.add_argument('-a', "--additional_files", metavar='additional_files', default=None,
+                        help='Additional files to be copied to the simulation directory. Separate by comma')
     parser.add_argument('-n', "--num_guesses", type=int, default=20, metavar='nguess',
                         help='Number of initial guesses to simulate')
     parser.add_argument('-m', '--num_optimizations', type=int, default=20, metavar='nopt',
