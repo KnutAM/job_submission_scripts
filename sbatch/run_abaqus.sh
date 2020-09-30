@@ -56,11 +56,13 @@ fi
 cp -pr * $TMPDIR
 module load ABAQUS
 cd $TMPDIR
+rm 'slurm-'$SLURM_JOB_ID'.out'	# Remove log-file to prevent it from being copied back and overwritten.
 
 # Setup backup
 while sleep $copytime; do
   rsync * $SLURM_SUBMIT_DIR/
 done &
+
 LOOPPID=$!
 
 # Check if umat is given
@@ -80,7 +82,6 @@ else
         abaqus job=$inputfile oldjob=$oldjob user=$umat cpus=$SLURM_NPROCS interactive
     fi
 fi
-
 kill $LOOPPID
 
 # Copy back output data and change directory, option p ensures attributes preserved, r recursively (include folder and their files)
